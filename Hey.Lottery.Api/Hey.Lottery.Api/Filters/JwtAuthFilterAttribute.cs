@@ -1,6 +1,7 @@
 ﻿using Hey.Lottery.ViewModels;
 using Huach.Framework.Jwt;
 using Huach.Framework.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http.Controllers;
@@ -34,7 +35,7 @@ namespace Hey.Lottery.Api.Filters
             {
                 HandleUnauthenticatedRequest(actionContext, "Token为空。");
             }
-            var jwtInfo = JwtHelper.Decode<UserInfo>(token, _secret);
+            var jwtInfo = JwtHelper.Decode<IDictionary<string, object>>(token, _secret);
             if (jwtInfo.IsSucceed)
             {
                 if (IsAuthenticated(jwtInfo.Payload))
@@ -47,12 +48,12 @@ namespace Hey.Lottery.Api.Filters
                 HandleUnauthenticatedRequest(actionContext, jwtInfo.Msg);
             }
         }
-        protected bool IsAuthenticated(UserInfo userInfo)
+        protected bool IsAuthenticated(IDictionary<string, object> userInfo)
         {
-            if (HttpContext.Current.GetOwinContext().Get<UserInfo>(nameof(UserInfo)) == null)
-            {
-                HttpContext.Current.GetOwinContext().Set(nameof(UserInfo), userInfo);
-            }
+            //if (HttpContext.Current.GetOwinContext().Get<IDictionary<string, object>>(nameof(userInfo)) == null)
+            //{
+            //    HttpContext.Current.GetOwinContext().Set(nameof(userInfo), userInfo);
+            //}
             //if (user == null)
             //    return false;
             //TODO 从缓存中获取用户信息

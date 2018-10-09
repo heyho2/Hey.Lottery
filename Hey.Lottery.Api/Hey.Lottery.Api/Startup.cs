@@ -1,6 +1,6 @@
 ﻿using Hey.Lottery.Api.Config;
+using Hey.Lottery.Api.Filters;
 using Owin;
-using Swashbuckle.Application;
 using System.Web.Http;
 
 namespace Hey.Lottery.Api
@@ -16,15 +16,12 @@ namespace Hey.Lottery.Api
 
             SwaggerConfig.Register(config);
 
-            // 设置默认的启动页为Swagger主页
-            config.Routes.MapHttpRoute(
-                name: "swagger_root",
-                routeTemplate: "",
-                defaults: null,
-                constraints: null,
-                handler: new RedirectHandler((message => message.RequestUri.ToString()), "swagger")
-            );
+            config.Filters.Add(new JwtAuthFilterAttribute());
 
+            config.Filters.Add(new ModelValidationFilterAttribute());
+
+            config.Filters.Add(new CustomExceptionFilterAttribute());
+          
             // 将路由配置附加到 appBuilder
             appBuilder.UseWebApi(config);
         }

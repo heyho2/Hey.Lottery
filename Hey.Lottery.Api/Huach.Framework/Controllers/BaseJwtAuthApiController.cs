@@ -24,7 +24,7 @@ namespace Huach.Framework.Controllers
         protected abstract bool VerifyLogin(string userIdentification, string password, out IDictionary<string, object> jwtPayload);
 
 
-        protected virtual IHttpActionResult Login(string userName, string password)
+        public virtual IHttpActionResult Login(string userName, string password)
         {
             if (VerifyLogin(userName, password, out IDictionary<string, object> jwtPayload))
             {
