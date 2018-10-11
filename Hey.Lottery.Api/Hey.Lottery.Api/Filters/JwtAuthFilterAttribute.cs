@@ -4,11 +4,12 @@ using Huach.Framework.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System;
 using System.Web.Http.Controllers;
 
 namespace Hey.Lottery.Api.Filters
 {
-    public class JwtAuthFilterAttribute: BaseAuthFilterAttribute
+    public class JwtAuthFilterAttribute : BaseAuthFilterAttribute
     {
         private static readonly string _secret;
 
@@ -50,13 +51,15 @@ namespace Hey.Lottery.Api.Filters
         }
         protected bool IsAuthenticated(IDictionary<string, object> userInfo)
         {
-            //if (HttpContext.Current.GetOwinContext().Get<IDictionary<string, object>>(nameof(userInfo)) == null)
-            //{
-            //    HttpContext.Current.GetOwinContext().Set(nameof(userInfo), userInfo);
-            //}
-            //if (user == null)
-            //    return false;
-            //TODO 从缓存中获取用户信息
+            CurrentUser.Info = new UserInfo
+            {
+                Id = Convert.ToInt32(userInfo["Id"]),
+                Name = userInfo["Name"].ToString()
+            };
+            if (userInfo == null)
+            {
+                return false;
+            }
             return true;
         }
     }
