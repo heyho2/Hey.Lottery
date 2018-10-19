@@ -111,6 +111,7 @@ namespace Hey.Lottery.Api.Controllers
             if (entity == null)
             {
                 return Fail("找不到奖品类型");
+
             }
             entity.Id = request.Id;
             entity.Type = request.Type;
