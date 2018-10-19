@@ -122,6 +122,7 @@ namespace Hey.Lottery.Api.Controllers
             if (result > 0)
             {
                 return Succeed("修改成功");
+
             }
             else
             {
