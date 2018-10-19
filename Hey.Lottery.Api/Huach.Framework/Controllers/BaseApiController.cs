@@ -38,6 +38,7 @@ namespace Huach.Framework.Controllers
         {
             return new ActionResult
             {
+                IsSucceed = false,
                 Code = 0,
                 Msg = msg
             };

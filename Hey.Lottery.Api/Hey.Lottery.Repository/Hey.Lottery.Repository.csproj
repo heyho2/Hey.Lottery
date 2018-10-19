@@ -36,11 +36,11 @@
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.12\lib\net452\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.8\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.EntityFramework, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.12\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.10.8\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
@@ -62,6 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="Business\PrizeTypeRepository.cs" />
+    <Compile Include="Business\EmployeeRepository.cs" />
+    <Compile Include="Business\PrizeRepository.cs" />
     <Compile Include="DBContextFactory.cs" />
     <Compile Include="LotteryDBContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -72,6 +75,10 @@
       <Project>{FBCE7B32-C98C-4F67-8C59-43819A8262DB}</Project>
       <Name>Hey.Lottery.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Hey.Lottery.ViewModels\Hey.Lottery.ViewModels.csproj">
+      <Project>{24763261-EBE9-4DA7-80B0-44821CC895C5}</Project>
+      <Name>Hey.Lottery.ViewModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Huach.Framework\Huach.Framework.csproj">
       <Project>{83E2B33B-F114-4C5B-A201-9B01DF1731A6}</Project>
       <Name>Huach.Framework</Name>
@@ -81,5 +88,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

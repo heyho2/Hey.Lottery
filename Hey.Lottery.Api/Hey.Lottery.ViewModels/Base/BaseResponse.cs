@@ -13,6 +13,16 @@ namespace Hey.Lottery.ViewModels.Base
     {
     }
     /// <summary>
+    /// 纯列表
+    /// </summary>
+    public class BaseListResponse<T> where T : BaseItemResponse
+    {
+        /// <summary>
+        /// 记录集合
+        /// </summary>
+        public List<T> Items { get; set; }
+    }
+    /// <summary>
     /// 分页响应
     /// </summary>
     public class BasePagingResponse<T> where T : BaseItemResponse
@@ -29,6 +39,14 @@ namespace Hey.Lottery.ViewModels.Base
         /// 记录集合
         /// </summary>
         public List<T> Items { get; set; }
+        /// <summary>
+        /// 当前页数
+        /// </summary>
+        public int Index { get; set; }
+        /// <summary>
+        /// 每页大小
+        /// </summary>
+        public int Size { get; set; }
     }
     /// <summary>
     /// 响应列表项

@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\EmployeeService.cs" />
+    <Compile Include="Business\PrizeService.cs" />
+    <Compile Include="Business\PrizeTypeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceBase.cs" />
+    <Compile Include="BaseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hey.Lottery.Models\Hey.Lottery.Models.csproj">
@@ -60,6 +63,9 @@
       <Project>{83e2b33b-f114-4c5b-a201-9b01df1731a6}</Project>
       <Name>Huach.Framework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

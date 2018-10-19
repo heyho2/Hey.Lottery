@@ -14,6 +14,7 @@ namespace Huach.Framework.Models
         {
             return new ActionResult
             {
+                IsSucceed = false,
                 Code = 0,
                 Msg = msg
             };
@@ -31,13 +32,14 @@ namespace Huach.Framework.Models
     {
         public ActionResult()
         {
-            this.HttpStatusCode = HttpStatusCode.OK;
-            this.Code = 1;
+            HttpStatusCode = HttpStatusCode.OK;
+            Code = 1;
+            IsSucceed = true;
         }
         public virtual string Msg { get; set; }
         public virtual T Data { get; set; }
         public virtual int Code { get; set; }
-        public virtual bool IsSucceed { get; set; } = true;
+        public virtual bool IsSucceed { get; set; }
         public virtual HttpStatusCode HttpStatusCode { get; set; }
         public int SubHttpStatusCode { get; internal set; }
 

@@ -17,18 +17,8 @@ namespace Hey.Lottery.Models
         /// </summary>
         public int EmployeeId { get; set; }
         /// <summary>
-        /// 部门
-        /// </summary>
-        [StringLength(30)]
-        public string Department { get; set; }
-        /// <summary>
-        /// 奖品名称
-        /// </summary>
-        [StringLength(30)]
-        public string PrizeName { get; set; }
-        /// <summary>
         /// 奖品类型
         /// </summary>
-        public int PrizeType { get; set; }
+        public int PrizeTypeId { get; set; }
     }
 }

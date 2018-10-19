@@ -23,7 +23,7 @@ namespace Hey.Lottery.Api.Filters
         }
         protected virtual string GetJwtToken(HttpActionContext actionContext)
         {
-            return actionContext.Request.Headers.GetValues(JwtTokenKeyName).FirstOrDefault();
+            return actionContext.Request.Headers?.GetValues(JwtTokenKeyName)?.FirstOrDefault();
         }
         public override void OnAuthorization(HttpActionContext actionContext)
         {

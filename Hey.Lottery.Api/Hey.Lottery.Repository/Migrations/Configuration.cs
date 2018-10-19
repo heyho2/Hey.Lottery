@@ -10,6 +10,9 @@ namespace Hey.Lottery.Repository.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
+
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(Hey.Lottery.Repository.LotteryDBContext context)

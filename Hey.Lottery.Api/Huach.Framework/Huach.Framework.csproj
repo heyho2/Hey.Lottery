@@ -109,6 +109,7 @@
     <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="Helper\NpgsqlArray.cs" />
     <Compile Include="Log\Logger.cs" />
+    <Compile Include="Models\PagingResult.cs" />
     <Compile Include="Redis\RedisSession.cs" />
     <Compile Include="Helper\Util.cs" />
     <Compile Include="Helper\ValidateCode .cs" />

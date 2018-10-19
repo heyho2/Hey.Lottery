@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Huach.Framework.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Huach.Framework.Extend
 {
@@ -42,6 +45,35 @@ namespace Huach.Framework.Extend
                                                                Expression.Quote(keySelectorLambda)));
             return query;
         }
-       
+        public static async Task<PagingResult<TResult>> PagingAsync<T, TResult>(this IQueryable<T> query, Expression<Func<T, TResult>> selector, int pageIndex, int pageSize, string order, string sort)
+        {
+            var count = await query.CountAsync();
+            query = query.SetQueryableOrder(sort, order).Skip(pageSize * (pageIndex - 1))
+                     .Take(pageSize);
+            var list = await query.Select(selector).ToListAsync();
+            return new PagingResult<TResult>
+            {
+                Count = count,
+                Items = list,
+                Index = pageIndex,
+                Size = pageSize,
+                Total = count % pageSize == 0 ? count / pageSize : count / pageSize + 1
+            };
+        }
+        public static PagingResult<TResult> Paging<T, TResult>(this IQueryable<T> query, Expression<Func<T, TResult>> selector, int pageIndex, int pageSize, string order, string sort)
+        {
+            var count = query.Count();
+            query = query.SetQueryableOrder(sort, order).Skip(pageSize * (pageIndex - 1))
+                     .Take(pageSize);
+            var list = query.Select(selector).ToList();
+            return new PagingResult<TResult>
+            {
+                Count = count,
+                Items = list,
+                Index = pageIndex,
+                Size = pageSize,
+                Total = count % pageSize == 0 ? count / pageSize : count / pageSize + 1
+            };
+        }
     }
 }

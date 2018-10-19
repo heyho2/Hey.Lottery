@@ -2,6 +2,7 @@
 using Hey.Lottery.Api.Filters;
 using Owin;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Hey.Lottery.Api
 {
@@ -21,7 +22,10 @@ namespace Hey.Lottery.Api
             config.Filters.Add(new ModelValidationFilterAttribute());
 
             config.Filters.Add(new CustomExceptionFilterAttribute());
-          
+
+            //跨域配置
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+
             // 将路由配置附加到 appBuilder
             appBuilder.UseWebApi(config);
         }

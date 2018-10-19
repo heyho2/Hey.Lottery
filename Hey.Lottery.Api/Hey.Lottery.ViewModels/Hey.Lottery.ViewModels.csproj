@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,11 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\DeletePrizeTypeRequest.cs" />
+    <Compile Include="Business\GetEmployeeListPagingRequest.cs" />
+    <Compile Include="Business\GetPrizeTypeListResponse.cs" />
+    <Compile Include="Business\GetPrizeTypeListPagingRequest.cs" />
+    <Compile Include="Business\UpdatePrizeTypeRequest.cs" />
+    <Compile Include="Business\AddPrizeTypeRequest.cs" />
+    <Compile Include="Business\ClearLotteryRequest.cs" />
+    <Compile Include="Business\LotteryRequest.cs" />
+    <Compile Include="Business\GetNotWonEmployeeListResponse.cs" />
+    <Compile Include="Business\AddEmployeeRequeste.cs" />
     <Compile Include="Base\BaseRequest.cs" />
     <Compile Include="Base\BaseResponse.cs" />
+    <Compile Include="Business\EmployeeDeleteRequest.cs" />
+    <Compile Include="Business\GetPrizeListRequest.cs" />
+    <Compile Include="Business\GetPrizePagingRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TokenRequest.cs" />
     <Compile Include="TokenResponse.cs" />
+    <Compile Include="Business\UpdateEmployeeRequest.cs" />
     <Compile Include="UserInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

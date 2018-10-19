@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Hey.Lottery.Repository
 {
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class LotteryDBContext : DbContext
     {
         private readonly Logger logger = Logger.CreateLogger(typeof(LotteryDBContext));
@@ -20,7 +21,7 @@ namespace Hey.Lottery.Repository
         }
         static LotteryDBContext()
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LotteryDBContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LotteryDBContext, Migrations.Configuration>());
         }
 
         public virtual DbSet<Prize> PrizeSet { get; set; }

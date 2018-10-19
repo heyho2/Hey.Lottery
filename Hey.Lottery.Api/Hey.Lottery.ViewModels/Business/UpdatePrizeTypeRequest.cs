@@ -1,35 +1,40 @@
-﻿using System;
+﻿using Hey.Lottery.ViewModels.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hey.Lottery.Models
+namespace Hey.Lottery.ViewModels.Business
 {
     /// <summary>
-    /// 奖品类型
+    /// 添加奖品类型请求
     /// </summary>
-    public class PrizeType : BaseModel
+    public class UpdatePrizeTypeRequest : BaseRequest
     {
+        /// <summary>
+        /// Id
+        /// </summary>
+        public int Id { get; set; }
         /// <summary>
         /// 名称
         /// </summary>
-        [StringLength(30)]
         public string PrizeName { get; set; }
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string Type { get; set; }
         /// <summary>
         /// 奖品数量
         /// </summary>
+        [Range(1, int.MaxValue)]
         public int Count { get; set; }
-
-        /// <summary>
-        /// 奖品类型
-        /// </summary>
-        [StringLength(30)]
-        public string Type { get; set; }
         /// <summary>
         /// 每轮抽奖个数
         /// </summary>
+        [Range(1, int.MaxValue)]
         public int Num { get; set; }
+
     }
 }
